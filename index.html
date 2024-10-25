@@ -1,0 +1,279 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cho zun 😉</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .Btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100px;
+            height: 40px;
+            border: none;
+            padding: 0px 20px;
+            background-color: rgb(6, 149, 16);
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0px rgb(1, 68, 7);
+            transition-duration: .3s;
+        }
+
+        .svg {
+            width: 13px;
+            position: absolute;
+            right: 0;
+            margin-right: 20px;
+            fill: white;
+            transition-duration: .3s;
+        }
+
+        .Btn:hover {
+            color: transparent;
+        }
+
+        .Btn:hover .svg {
+            right: 43%;
+            margin: 0;
+            padding: 0;
+            border: none;
+            transition-duration: .3s;
+        }
+
+        .Btn:active {
+            transform: translate(3px, 3px);
+            transition-duration: .3s;
+            box-shadow: 2px 2px 0px rgb(140, 32, 212);
+        }
+
+        .Btn-2 {
+            background-color: rgb(147, 6, 55);
+            box-shadow: 5px 5px 0px rgb(68, 1, 7);
+        }
+
+        .Btn-2:active {
+            box-shadow: 2px 2px 0px rgb(212, 32, 140);
+        }
+
+        .container {
+            height: 200px;
+            width: 350px;
+            border-radius: 1em;
+            overflow: hidden;
+            box-shadow: 0 10px 20px #dbdbdb;
+            font-family: sans-serif;
+            display: none;
+            margin-bottom: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .palette {
+            display: flex;
+            height: 86%;
+            width: 100%;
+        }
+
+        .color {
+            height: 100%;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: flex 0.1s linear;
+        }
+
+        .color span {
+            opacity: 0;
+            transition: opacity 0.1s linear;
+        }
+
+        .color:nth-child(1) {
+            background: #264653;
+        }
+
+        .color:nth-child(2) {
+            background: #2a9d8f;
+        }
+
+        .color:nth-child(3) {
+            background: #e9c46a;
+        }
+
+        .color:nth-child(4) {
+            background: #f4a261;
+        }
+
+        .color:nth-child(5) {
+            background: #e76f51;
+        }
+
+        .color:hover {
+            flex: 2;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .color:hover span {
+            opacity: 1;
+        }
+
+        #stats {
+            height: 14%;
+            width: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5em;
+            box-sizing: border-box;
+            color: #bebebe;
+        }
+
+        #stats svg {
+            fill: #bebebe;
+            transform: scale(1.2);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        /* Hiệu ứng xuất hiện cho bông hoa lớn */
+        .sunflower-appear {
+            opacity: 0;
+            transition: opacity 1s ease-in; /* Hiệu ứng rõ dần */
+        }
+
+        /* Phóng to biểu tượng hoa hướng dương */
+        .sunflower-expanded {
+            transform: scale(5);
+            opacity: 1;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(5);
+        }
+
+        /* Ẩn thẻ container */
+        .container-hidden {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Hiệu ứng lặn xuống cho hoa nhỏ */
+        .sunflower-fade {
+            opacity: 0;
+            transform: translateY(20px); /* Lặn xuống */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Hiệu ứng mờ dần và lặn xuống */
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="colorContainer">
+        <div class="palette">
+            <div class="color"><span>ᑕᕼᑌᑕ</span></div> 
+            <div class="color"><span>᙭Ꭵᑎᕼ</span></div>
+            <div class="color"><span>ᑎᕼᗩ丅</span></div>
+            <div class="color"><span>乙ᑌᑎ</span></div>
+            <div class="color"><span>😉</span></div>
+        </div>
+        <div id="stats">
+            <span id="sunflowerIcon">🌻</span>
+            <span id="largeSunflower" class="sunflower-appear" style="opacity: 0;">🌻</span> <!-- Bông hoa lớn -->
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button class="Btn" id="agreeButton" onclick="handleAgree()">
+            <span>Nhận</span>
+            <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12 2a10 10 0 1 1-7.07 17.07L1.93 23l3.83-3.83A10 10 0 1 1 12 2z"/>
+            </svg>
+        </button>
+
+        <button class="Btn Btn-2" id="disagreeButton" onclick="handleDisagree()">
+            <span>Chê</span>
+            <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12 2a10 10 0 1 1-7.07 17.07L1.93 23l3.83-3.83A10 10 0 1 1 12 2z"/>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        let intervalId;
+        let greenButtonClickCount = 0;
+        const redButton = document.getElementById('disagreeButton');
+        const colorContainer = document.getElementById('colorContainer');
+        const sunflowerIcon = document.getElementById("sunflowerIcon");
+        const largeSunflower = document.getElementById("largeSunflower");
+
+        function handleAgree() {
+            greenButtonClickCount++;
+            
+            if (greenButtonClickCount === 1) {
+                redButton.style.display = 'none';
+                colorContainer.style.display = 'block';
+                setTimeout(() => {
+                    colorContainer.style.opacity = '1';
+                }, 0);
+                clearInterval(intervalId);
+            } else if (greenButtonClickCount === 2) {
+                sunflowerIcon.classList.add('sunflower-fade'); // Hiệu ứng lặn xuống
+                setTimeout(() => {
+                    colorContainer.classList.add('container-hidden'); // Ẩn dần container
+                    largeSunflower.classList.add('sunflower-appear'); // Thêm lớp để xuất hiện mượt mà
+                    largeSunflower.style.opacity = '1'; // Đặt opacity thành 1 để bắt đầu hiệu ứng
+                    largeSunflower.classList.add('sunflower-expanded'); // Phóng to hoa hướng dương
+                }, 50); // Đợi container biến mất hoàn toàn
+            }
+        }
+
+        function handleDisagree() {
+            clickCount++;
+            const button = redButton;
+
+            moveButton(button);
+
+            if (clickCount >= 6) {
+                startMovingRandomly(button);
+            }
+        }
+
+        function moveButton(button) {
+            const randomX = Math.random() * (window.innerWidth - button.offsetWidth);
+            const randomY = Math.random() * (window.innerHeight - button.offsetHeight);
+            button.style.position = 'absolute';
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        }
+
+        function startMovingRandomly(button) {
+            if (!intervalId) {
+                intervalId = setInterval(() => {
+                    moveButton(button);
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>
